@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row" *ngIf="type === 'officer'">
+    <div class="col-12">
+      <h1 class="text-center mt-4">เพิ่มข้อมูลOfficerใหม่</h1>
+
+      <form
+        [formGroup]="formAddData"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+        class="p-5"
+      >
+        <div class="mb-3">
+          <label for="officerName" class="form-label">Officer Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="officerName"
+            id="officerName"
+            placeholder="Enter Officer Name"
+          />
+          <div
+            *ngIf="this.formAddData.get('officerName')?.invalid"
+            class="text-danger"
+          >
+            กรุณากรอกชื่อ
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="officerName" class="form-label">Officer Age</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="officerAge"
+            id="officerAge"
+            placeholder="Enter Officer Age"
+          />
+          <div
+            *ngIf="this.formAddData.get('officerAge')?.invalid"
+            class="text-danger"
+          >
+            กรุณากรอกอายุ
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="type === 'home'">
+    <div class="col-12">
+      <h1 class="text-center mt-4">เพิ่มข้อมูลHomeใหม่</h1>
+
+      <form
+        [formGroup]="formAddData"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+        class="p-5"
+      >
+        <div class="mb-3">
+          <label for="officerName" class="form-label">Home Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="homeName"
+            id="homeName"
+            placeholder="Enter Home Name"
+          />
+          <div
+            *ngIf="this.formAddData.get('homeName')?.invalid"
+            class="text-danger"
+          >
+            กรุณากรอกชื่อ
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+</div>

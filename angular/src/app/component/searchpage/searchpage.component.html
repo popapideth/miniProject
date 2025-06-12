@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="row">
+    <!-- Search input -->
+    <div class="col-12 py-4">
+      <h1 class="text-center mb-4">Search Page</h1>
+      <form [formGroup]="formSearch" class="mb-4" (ngSubmit)="onSubmit()">
+        <div class="row d-flex align-items-center justify-content-center">
+          <div class="form-group col-lg-2 col-md-1"></div>
+          <!-- Home  -->
+          <div class="form-group col-lg-1 col-md-1">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="searchType"
+              [value]="'home'"
+              id="searchType1"
+            />
+            <label
+              class="form-check-label"
+              for="searchType1"
+              style="padding-left: 10px"
+            >
+              Home
+            </label>
+          </div>
+          <!-- Officer -->
+          <div class="form-group col-lg-1 col-md-1">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="searchType"
+              [value]="'officer'"
+              id="searchType2"
+            />
+            <label
+              class="form-check-label"
+              for="searchType2"
+              style="padding-left: 10px"
+            >
+              Officer
+            </label>
+          </div>
+          <!-- Search Input -->
+          <!-- Id -->
+          <div class="form-group col-lg-2 col-md-1 d-flex align-items-center">
+            <label for="searchInput" class="p-2"> ID </label>
+            <input
+              type="text"
+              class="form-control"
+              id="searchIdInput"
+              formControlName="searchId"
+              placeholder="Search by ID"
+            />
+          </div>
+          <!-- Name -->
+          <!-- <div class="form-group col-lg-3 d-flex align-items-center">
+            <label for="searchInput" class="p-2"> Name </label>
+            <input
+              type="text"
+              class="form-control"
+              id="searchNameInput"
+              formControlName="searchName"
+              placeholder="Search by Name"
+            />
+          </div> -->
+          <!-- Search Button -->
+          <div class="form-group col-lg-3">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-search" aria-hidden="true"></i> ค้นหา
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container (วางไว้ที่มุมขวาบน) -->
+<div class="toast-container position-fixed top-0 end-0 p-3">
+  <div
+    id="searchToast"
+    class="toast"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+    [class.bg-danger]="toastType === 'error'"
+    [class.bg-success]="toastType === 'success'"
+    [class.text-white]="true"
+  >
+    <div class="toast-header">
+      <i class="fa fa-search me-2"></i>
+      <strong class="me-auto">ผลการค้นหา</strong>
+      <button
+        type="button"
+        class="btn-close btn-close-white"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="toast-body">
+      {{ toastMessage }}
+    </div>
+  </div>
+</div>

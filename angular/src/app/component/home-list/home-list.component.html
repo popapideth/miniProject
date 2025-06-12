@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 py-4">
+      <h1 class="text-center mb-3">Home List</h1>
+      <div class="d-grid d-md-flex justify-content-md-end mb-3 mx-3">
+        <button
+          class="btn btn-success"
+          type="button"
+          title="เพิ่มข้อมูลHomeใหม่"
+          (click)="pageAddHome('home')"
+        >
+          เพิ่มข้อมูลHomeใหม่
+        </button>
+      </div>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr class="text-center align-middle">
+            <th>Home ID</th>
+            <th>Home Name</th>
+            <th>แก้ไขข้อมูล</th>
+            <th>Officer ที่เกี่ยวข้อง</th>
+            <th>ลบข้อมูล</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center align-middle" *ngFor="let home of datahomes">
+            <td>{{ home.homeId }}</td>
+            <td>{{ home.homeName }}</td>
+            <td class="text-center">
+              <div class="btn-group">
+                <a
+                  class="btn btn-warning"
+                  (click)="pageEditHome(home.homeId, 'edithome')"
+                >
+                  <i
+                    class="fa fa-pencil"
+                    aria-hidden="true"
+                    title="แก้ไขข้อมูล"
+                  ></i>
+                </a>
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="btn-group">
+                <a
+                  class="btn btn-info"
+                  (click)="viewHomeOfficer(home.homeId, 'viewofficer')"
+                >
+                  <i
+                    class="fa fa-search-plus"
+                    aria-hidden="true"
+                    title="ดูOfficer ที่เกี่ยวข้อง"
+                  ></i>
+                </a>
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="btn-group">
+                <a class="btn btn-danger" (click)="deleteHome(home.homeId)">
+                  <i
+                    class="fa fa-trash"
+                    aria-hidden="true"
+                    title="ลบข้อมูล"
+                  ></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="datahomes.length === 0">
+            <td colspan="5" class="text-center">ไม่พบข้อมูล</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
